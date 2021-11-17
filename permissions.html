@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Template</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="module" src="app.js"></script>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+    rel="stylesheet"
+  />
+  <script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- Container wrapper -->
+      <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand me-2" href="">
+          <img
+            src="images/My_ph_logo-0760e7ef-7d4b-478c-8fd1-7171db058458.png"
+            height="50"
+            alt=""
+            loading="lazy"
+            style="margin-top: -1px;"
+          />
+        </a>
+    
+        <!-- Toggle button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#navbarButtonsExample"
+          aria-controls="navbarButtonsExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+    
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+          <!-- Left links -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"target="_self">About</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="faq.html" target="_self">FAQs</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="mailto:" target="_self">Contact</a></li>
+              <li class="nav-item"><a class="nav-link active logged-in hidden" id="profile" target = "_self"> Profile</a></li>
+              <li class="nav-item">
+                <a class="nav-link active logged-in hidden" id="logout" href="login.html" target="_self">Logout</a>
+              </li>
+            </ul>
+          </ul>
+          <!-- Left links -->
+        </div>
+        </div>
+        <!-- Collapsible wrapper -->
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <div id="container">
+      <br>
+      <h1>Permissions</h1>
+      <br>
+      <h5>
+        (Please read this Disclaimer before starting the MyPH HealthChek&trade;)
+      </h5>
+      <p>
+        The information in the MyPH HealthChek&trade; Preventive Health
+        Questionnaire is your private health information. We will only share
+        your information with the individuals and/ or entities that you approve.
+        Please check the appropriate box or boxes below to indicate your sharing
+        preferences:
+      </p>
+      <p>&nbsp;</p>
+      <form class = "sharePermissions">
+        <label class="container"
+          >Share MyPH HealthChek&trade; Preventive Health information
+          <strong>with me only.</strong>
+          <input id='share-with-me' type="checkbox" checked="checked" disabled/>
+          <span class="checkmark"></span>
+        </label>
+        <label class="container"
+          >Share MyPH HealthChek&trade; Preventive Health information
+          <strong>with me and with my Primary Care doctor.</strong>
+          <input id='share-with-doctor'type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="container"
+          >Share MyPH HealthChek&trade; Preventive Health information
+          <strong>with my employer per my specific written request.</strong>
+          (The goal MyPH HealthChek&trade; is to keep you healthy. Some employers
+          may use your preventive health information to offer you reduced health
+          care costs. You must make a specific written request to have your
+          information shared with your employer)*
+          <span class="checkmark"></span>
+        </label>
+        <label class="container"
+          >Share MyPH HealthChek&trade; Preventive Health information
+          <strong
+            >with another healthcare professional (HCP) (Please give specific
+            Name/ Email/ Fax of the HCP at time of request)*
+          </strong>
+          <input id='share-with-HCP'type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <div class="spacer"></div>
+        <button type="submit" class="btn btn-success btn-rounded">Continue</button>
+      </form>
+    </div>
+    <div id="footer">footer</div>
+  </body>
+</html>

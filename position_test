@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+	
+	<div style="position: relative;text-align: center;">
+  <img src="img_snow_wide.jpg" alt="Snow" style="width:100%;">
+  <div style=" position: absolute;bottom: 8px;left: 16px;">Bottom Left</div>
+
+</div>
+	
+</body>
+</html>

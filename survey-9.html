@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Template</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <div id="navigation">
+      <ul>
+        <li><a href="#" target="_self">About</a></li>
+        <li><a href="#" target="_self">FAQs</a></li>
+        <li><a href="#" target="_self">Contact</a></li>
+		<li><a class = "logged-in" id = "logout" href="#" target="_self">Logout</a></li>
+      </ul>
+      <p class="logoPlaceholder">HealthChek&copy; Logo</p>
+    </div>
+
+    <!-- account info -->
+    <div id="account_info">
+      <div id="acct_name">bhl1414</div>
+      <div id="acct_initials">bh</div>
+      <img
+        id="acct_circle"
+        src="images/white_circle_ID.png"
+        alt="background circle"
+      />
+    </div>
+
+    <!-- questionnaire header -->
+    <div id="question_header">
+      <h4>Head, Ears, Eyes, Sinuses and Mouth</h4>
+
+      <!--image -->
+      <div id="question_image">
+        <img src="images/survey_image1.png" width="535" height="230" alt="" />
+      </div>
+
+      <!-- header body copy -->
+      <div id="header_body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie,
+        tellus et facilisis viverra, turpis odio tincidunt nisl, vel vulputate
+        felis metus accumsan nisl. Donec et suscipit mi, eget ultrices nisl.
+        Nullam eu metus mollis, accumsan augue in, luctus tellus. Pellentesque
+        molestie at orci eget consectetur.
+        <div></div>
+
+        <!-- Number of questions -->
+        <div class="number_questions">
+          ##
+          <div class="question_detail">stats</div>
+        </div>
+
+        <!-- amount of time -->
+        <div class="floatright">
+          <div class="number_questions">
+            XX
+            <div class="question_detail">Amount of time remaining</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end questionnaire header -->
+
+    <!-- survey container -->
+    <div id="survey_container">
+      <!-- question count and progress bar -->
+      <div id="question_progress">
+        Question 9 of 50
+        <div id="progressBar">
+          <label for="file"></label>
+          <progress class="light-grey" value="9" max="50">10%</progress>
+        </div>
+      </div>
+
+      <p>
+        <strong>Head, Ears, Eyes, Sinuses, and Mouth</strong> for past year
+        (your teeth and gums). <br />
+        Please check all answers that apply.
+      </p>
+      <p>&nbsp;</p>
+      <form action="/?.php">
+        <label class="container"
+          >I have NO medical problems with my Head, Ears, Eyes, Mouth or
+          Sinuses.
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="container"
+          >I suffer from repeated Headaches or Migraines.
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="container"
+          >I have a Hearing Loss or wear a Hearing Aid.
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="container"
+          >I have poor Vision. I wear Glasses/Contact lenses.
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="container"
+          >I have chronic Sinus infections.
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+
+        <div class="spacer"></div>
+        <input type="submit" value="CONTINUE" class="button" /><input
+          type="submit"
+          value="EXIT"
+          class="button"
+        />
+      </form>
+    </div>
+    <div id="footer">footer</div>
+  </body>
+</html>
