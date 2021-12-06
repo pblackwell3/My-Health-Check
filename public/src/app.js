@@ -1,11 +1,11 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   doc,
   setDoc,
   getDoc,
   updateDoc,
-} from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
+} from "firebase/firestore";
 import {
   getAuth,
   sendEmailVerification,
@@ -14,7 +14,7 @@ import {
   onAuthStateChanged,
   signOut,
   updateProfile,
-} from "https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js";
+} from "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -116,13 +116,14 @@ if (loginForm != null) {
             case "auth/email-already-exists":
               errorMessage =
                 "Email is already registered. Please forget password.";
-              break;
-              case "auth/internal-error":
+            break;
+            case "auth/internal-error":
                 errorMessage =
                 "Please create a password.";
-                break;
+            break;
             default:
               errorMessage = "An undefined Error happened.";
+            break;
           }
           const loginerrorMessage = document.createTextNode(errorMessage);
 
@@ -201,9 +202,12 @@ if (signUpForm != null) {
               errorMessage =
                 "Email is already registered. Please forget password.";
               break;
-              case "auth/internal-error":
+            case "auth/internal-error":
                 errorMessage =
                 "Incorrect password.";
+              break;
+              default:
+                errorMessage = "An undefined Error happened.";
               break;
           }
           const loginerrorMessage = document.createTextNode(errorMessage);
@@ -236,40 +240,40 @@ if (signUpForm != null) {
   });
 }
 
-const residencyForm = document.querySelector(".residency-form");
-if (residencyForm != null) {
-  residencyForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+// const residencyForm = document.querySelector(".residency-form");
+// if (residencyForm != null) {
+//   residencyForm.addEventListener("submit", (e) => {
+//     e.preventDefault();
 
-    var liveNowState =
-      document.getElementById("NOWstate_region").selectedIndex.value;
-    var liveNowResidency =
-      document.getElementById("NOWcountry").selectedIndex.value;
-    var bornResidency =
-      document.getElementById("BORNcountry").selectedIndex.value;
-    var livedMostResidency =
-      document.getElementById("MAJORcountry").selectedIndex.value;
+//     var liveNowState =
+//       document.getElementById("NOWstate_region").selectedIndex.value;
+//     var liveNowResidency =
+//       document.getElementById("NOWcountry").selectedIndex.value;
+//     var bornResidency =
+//       document.getElementById("BORNcountry").selectedIndex.value;
+//     var livedMostResidency =
+//       document.getElementById("MAJORcountry").selectedIndex.value;
 
-    (async function (
-      liveNowState,
-      liveNowResidency,
-      bornResidency,
-      livedMostResidency
-    ) {
-      try {
-        await updateDoc(docRef, {
-          currentLocation: liveNowState + " " + liveNowResidency,
-          bornLocation: bornResidency,
-          livedMostLocation: livedMostResidency,
-        });
-      } catch (error) {
-        const loginerrorMessage = document.createTextNode(error.message);
-        document.getElementById("error").appendChild(loginerrorMessage);
-      }
-    })(liveNowState, liveNowResidency, bornResidency, livedMostResidency);
-    document.location.href = "Confirmation.html";
-  });
-}
+//     (async function (
+//       liveNowState,
+//       liveNowResidency,
+//       bornResidency,
+//       livedMostResidency
+//     ) {
+//       try {
+//         await updateDoc(docRef, {
+//           currentLocation: liveNowState + " " + liveNowResidency,
+//           bornLocation: bornResidency,
+//           livedMostLocation: livedMostResidency,
+//         });
+//       } catch (error) {
+//         const loginerrorMessage = document.createTextNode(error.message);
+//         document.getElementById("error").appendChild(loginerrorMessage);
+//       }
+//     })(liveNowState, liveNowResidency, bornResidency, livedMostResidency);
+//     document.location.href = "Confirmation.html";
+//   });
+// }
 
 const profileCreationForm = document.querySelector(".profileCreation-form");
 if (profileCreationForm != null) {
@@ -345,6 +349,7 @@ if (profile != null) {
 //   });
 // }
 
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     hideNavBar(user);
@@ -378,3 +383,5 @@ if (logout != null) {
       .catch((error) => {});
   });
 }
+
+export  {firebaseConfig};

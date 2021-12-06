@@ -1,6 +1,6 @@
 {
   "firestore": {
-    "rules": "(firestore.rules)",
+    "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
@@ -20,6 +20,13 @@
     },
     "ui": {
       "enabled": false
+    },
+    "hosting": {
+      "port": 5000
     }
+  },
+  
+  "storage": {
+    "rules": "storage.rules"
   }
 }

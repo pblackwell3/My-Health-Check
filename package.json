@@ -1,0 +1,28 @@
+{
+  "name": "myph",
+  "version": "1.0.0",
+  "description": "a user authentication",
+  "private": true,
+  "dependencies": {
+    "firebase": "^9.6.0",
+    "prettier": "^2.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  },
+  "scripts": {
+    "test": "echo",
+    "build": "webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pblackwell3/myPHCHECK.git"
+  },
+  "author": "Phillip Blackwell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pblackwell3/myPHCHECK/issues"
+  },
+  "homepage": "https://github.com/pblackwell3/myPHCHECK#readme"
+}
