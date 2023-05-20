@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Template</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="module" src="./dist/bundle.js"></script>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+    rel="stylesheet"
+  />
+  <script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- Container wrapper -->
+      <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand me-2" href="">
+          <img
+          src="images/My_ph_logo_healthChek.png"
+            height="50"
+            alt=""
+            loading="lazy"
+            style="margin-top: -1px;"
+          />
+        </a>
+    
+        <!-- Toggle button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#navbarButtonsExample"
+          aria-controls="navbarButtonsExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+    
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+          <!-- Left links -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="about.html"target="_blank">About</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="faq.html" target="_blank">FAQs</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="mailto:" target="_blank">Contact</a></li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active logged-in"
+                  style="display: none;"
+                  id="profile"
+                  target="_self"
+                >
+                  Profile</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active logged-in"
+                  style="display: none;"
+                  id="logout"
+                  href="login.html"
+                  target="_self"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+
+    <!-- Main Container -->
+    <div id="container" class="profileInfo">
+      <br>
+        <h1>Profile Information</h1><br/>
+      <br /><br />
+      <label id="">Name:</label>
+      <div class="formstyle floatright" type="text"
+      id="profile-name"></div>
+      <br><br><br>
+      <label id="">Mobile Number:</label>
+      <div class="formstyle floatright" type="text"
+      id="profile-mobile"></div>
+      <br><br><br>
+      <label id="">Email:</label>
+      <div class="formstyle floatright" type="text"
+      id="profile-email"></div>
+      <br><br><br>
+      <h6>This is your unique ID that will be required to take the survey. Keep it secure as it will allow you to retreive and view your survey results.</h6>
+      <label for="password">Unique ID:</label>
+      <div class="formstyle floatright" type="password"
+      id="profile-uniqueid"></div>
+      
+      <br /><br /><br />
+      <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href= "YourInfo.html" target = "_self"><button type="submit" class="btn btn-success btn-rounded">Update Information</button></a>
+      </div>
+      <br /><br />
+      <!-- <label id="profile-permissions">
+        Share MyPH HealthChek&trade; Preventive Health information
+        with:
+      </label>
+      <br/>
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="profile-employer"
+        disabled
+      />
+      <label for="password">Employer</label><br />
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="profile-doctor"
+        disabled
+      />
+      <label for="password">Doctor</label><br />
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="profile-HCP"
+        disabled
+      />
+      <label for="password">HCP</label><br /><br /> -->
+      
+      <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
+        <button id="goToSurvey"  class="btn btn-success btn-rounded">Take the Quiz</button>
+      </div>
+    </div>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-3">
+          <!-- Facebook -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Form -->
+        <section
+          class="
+            d-flex
+            justify-content-center justify-content-lg-between
+            p-4
+            border-bottom
+          "
+        >
+          <!-- Left -->
+          <div class="me-5 d-none justify-content-center d-lg-block">
+            Get connected with us on social networks:
+          </div>
+          <div class="justify-content-left">
+            <a
+              class="p-2"
+              style="color: #3557a1"
+              href="https://www.facebook.com/My-Preventive-Health-108697452489037/"
+              role="button"
+              ><i class="fab fa-facebook-f fa-lg"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a
+              class="p-2"
+              style="color: #55acee"
+              href="https://twitter.com/GANClinics"
+              role="button"
+              ><i class="fab fa-twitter fa-lg"></i
+            ></a>
+
+            <!-- YouTube -->
+            <a class="p-2" style="color: #ed302f" href="#!" role="button"
+              ><i class="fab fa-youtube fa-lg"></i
+            ></a>
+          </div>
+          <!-- Right -->
+        </section>
+        <!-- Section: Form -->
+
+        <!-- Section: Text -->
+        <section class="mb-4">
+          <p class="text-white">
+            <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
+            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
+            sequi voluptate quas. -->
+          </p>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="text-white col-lg-4 col-md-0 mb-0 mb-md-0">
+              <h5 class="text-uppercase">Learn More</h5>
+
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a
+                    href="https://mypreventivehealth.com"
+                    target="_blank"
+                    class="text-white"
+                    >Gastro and Nutrition Clinics</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://mypreventivehealth.com"
+                    target="_blank"
+                    class="text-white"
+                    >MyPreventiveHealth</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="http://mypreventivehealth.com/blog/"
+                    target="_blank"
+                    class="text-white"
+                    >MyPreventiveHealth Blog</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="http://mypreventivehealth.com/my-phtv/"
+                    target="_blank"
+                    class="text-white"
+                    >MyPreventiveHealth TV</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-0 mb-0 mb-md-0">
+              <h5 class="text-uppercase">Browse More</h5>
+
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="about.html" class="text-white">About Us</a>
+                </li>
+                <li>
+                  <a href="disclaimer.html" class="text-white">Terms of Use</a>
+                </li>
+                <!-- <li>
+                  <a href="#!" class="text-white">Link 3</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">Link 4</a>
+                </li> -->
+              </ul>
+            </div>
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-0 mb-0 mb-md-0">
+              <h5 class="text-uppercase">Contact Us</h5>
+
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <h6 class="text-white">PO Box 77007,</h6>
+                </li>
+                <li>
+                  <h6 class="text-white">Atlanta, GA 30357-1007</h6>
+                </li>
+                <li>
+                  <h6 class="text-white">Telephone:+1 404 681 0000</h6>
+                </li>
+                <li>
+                  <h6 class="text-white">FAX: +1 678 866-2538</h6>
+                </li>
+                <li>
+                  <h6 class="text-white">Email: info@MyPreventiveHealth.org</h6>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © Copyright - My Preventive Health, LLC
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  </body>
+</html>
