@@ -18,12 +18,14 @@ import {
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAsOhyEyWEocvIyHyMkc5SmiiaqdlrTRL4",
-  authDomain: "iiiii777ii887789i.firebaseapp.com",
-  projectId: "iiiii777ii887789i",
-  storageBucket: "iiiii777ii887789i.appspot.com",
-  messagingSenderId: "207362776449",
-  appId: "1:207362776449:web:62bc91bc13eb80302ddc80",
+  apiKey: "AIzaSyDEd8KPUnstmvpI2ZYjTBfxQSl594DFlzw",
+  authDomain: "mypreventivehealth-94667.firebaseapp.com",
+  databaseURL: "https://mypreventivehealth-94667-default-rtdb.firebaseio.com",
+  projectId: "mypreventivehealth-94667",
+  storageBucket: "mypreventivehealth-94667.appspot.com",
+  messagingSenderId: "762526989351",
+  appId: "1:762526989351:web:21bc52f5c6c42344b3e202",
+  measurementId: "G-RBHLB1NC61",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -32,9 +34,11 @@ const db = getFirestore(app);
 const welcome = document.querySelector(".welcome");
 const faq = document.querySelector(".faq");
 const disclaimer = document.querySelector(".disclaimer");
+var uniqueID;
+var query = new URLSearchParams();
+const url = "https://myhealthchk.checkbox.com/omghealth?USID="
 
 onAuthStateChanged(auth, (user) => {
-  
   if (user) {
     hideNavBar(user);
     const profileInfo = document.querySelector(".profileInfo");
@@ -44,6 +48,7 @@ onAuthStateChanged(auth, (user) => {
     if (profileInfo != null) {
       const docRef = doc(db, "users", user.uid);
       getDoc(docRef).then((doc) => {
+        uniqueID = doc.data().uniqueID
         const uniqueIDProfile = document.createTextNode(doc.data().uniqueID);
         const displayNameProfile = document.createTextNode(user.displayName);
         const emailProfile = document.createTextNode(user.email);
@@ -67,8 +72,9 @@ onAuthStateChanged(auth, (user) => {
     } else if (confirmationUniqueID != null) {
       const docRef = doc(db, "users", user.uid);
       getDoc(docRef).then((doc) => {
+        uniqueID = doc.data().uniqueID;
         const confirmationUniqueID = document.createTextNode(
-          doc.data().uniqueID
+          uniqueID
         );
         if (!document.querySelector(".confirmationUniqueID").hasChildNodes()) {
           document
@@ -108,29 +114,28 @@ if (loginForm != null) {
       })
       .catch((error) => {
         var errorMessage = "";
-          switch (error.code) {
-            case "auth/invalid-email":
-              errorMessage =
-                "Your email address appears to be imporperly formatted/missing.";
-              break;
-            case "auth/email-already-exists":
-              errorMessage =
-                "Email is already registered. Please forget password.";
+        switch (error.code) {
+          case "auth/invalid-email":
+            errorMessage =
+              "Your email address appears to be imporperly formatted/missing.";
             break;
-            case "auth/internal-error":
-                errorMessage =
-                "Please create a password.";
+          case "auth/email-already-exists":
+            errorMessage =
+              "Email is already registered. Please forget password.";
             break;
-            default:
-              errorMessage = "An undefined Error happened.";
+          case "auth/internal-error":
+            errorMessage = "Please create a password.";
             break;
-          }
-          const loginerrorMessage = document.createTextNode(errorMessage);
+          default:
+            errorMessage = error.message;
+            break;
+        }
+        const loginerrorMessage = document.createTextNode(errorMessage);
 
-          if (document.getElementById("error").hasChildNodes()) {
-            document.getElementById("error").removeChild(loginerrorMessage);
-          }
-          document.getElementById("error").appendChild(loginerrorMessage);
+        if (document.getElementById("error").hasChildNodes()) {
+          document.getElementById("error").removeChild(loginerrorMessage);
+        }
+        document.getElementById("error").appendChild(loginerrorMessage);
       });
   });
 }
@@ -149,7 +154,7 @@ function create_UUID() {
 }
 
 async function createUserCollection(db, userID, phoneNumber) {
-  const uniqueID = create_UUID();
+  uniqueID = create_UUID();
   try {
     await setDoc(doc(db, "users", userID), {
       uniqueID: uniqueID,
@@ -183,10 +188,12 @@ if (signUpForm != null) {
         .then((userCredential) => {
           updateProfile(auth.currentUser, {
             email: email,
-          }).then(() => {}).catch((error) => {});
-            sendEmailVerification(userCredential.user).then(() => {
-            }).catch((error) => {
-            });
+          })
+            .then(() => {})
+            .catch((error) => {});
+          sendEmailVerification(userCredential.user)
+            .then(() => {})
+            .catch((error) => {});
           createUserCollection(db, userCredential.user.uid, phoneNumber).then(
             () => {}
           );
@@ -203,11 +210,10 @@ if (signUpForm != null) {
                 "Email is already registered. Please forget password.";
               break;
             case "auth/internal-error":
-                errorMessage =
-                "Incorrect password.";
+              errorMessage = "Incorrect password.";
               break;
-              default:
-                errorMessage = "An undefined Error happened.";
+            default:
+              errorMessage = "An undefined Error happened.";
               break;
           }
           const loginerrorMessage = document.createTextNode(errorMessage);
@@ -221,16 +227,14 @@ if (signUpForm != null) {
       repeatPassword == "" ||
       password != repeatPassword
     ) {
-      const loginerrorMessage = document.createTextNode("Passwords do not match")
+      const loginerrorMessage = document.createTextNode(
+        "Passwords do not match"
+      );
       if (document.getElementById("error").hasChildNodes()) {
         document.getElementById("error").removeChild(loginerrorMessage);
       }
       document.getElementById("error").appendChild(loginerrorMessage);
-    } else if (
-      email == "" ||
-      confirmEmail == "" ||
-      email != confirmEmail
-    ) {
+    } else if (email == "" || confirmEmail == "" || email != confirmEmail) {
       const loginerrorMessage = document.createTextNode("Emails do not match");
       if (document.getElementById("error").hasChildNodes()) {
         document.getElementById("error").removeChild(loginerrorMessage);
@@ -240,40 +244,40 @@ if (signUpForm != null) {
   });
 }
 
-// const residencyForm = document.querySelector(".residency-form");
-// if (residencyForm != null) {
-//   residencyForm.addEventListener("submit", (e) => {
-//     e.preventDefault();
+const residencyForm = document.querySelector(".residency-form");
+if (residencyForm != null) {
+  residencyForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    var liveNowState =
+      document.getElementById("NOWstate_region").selectedIndex.value;
+    var liveNowResidency =
+      document.getElementById("NOWcountry").selectedIndex.value;
+    var bornResidency =
+      document.getElementById("BORNcountry").selectedIndex.value;
+    var livedMostResidency =
+      document.getElementById("MAJORcountry").selectedIndex.value;
 
-//     var liveNowState =
-//       document.getElementById("NOWstate_region").selectedIndex.value;
-//     var liveNowResidency =
-//       document.getElementById("NOWcountry").selectedIndex.value;
-//     var bornResidency =
-//       document.getElementById("BORNcountry").selectedIndex.value;
-//     var livedMostResidency =
-//       document.getElementById("MAJORcountry").selectedIndex.value;
-
-//     (async function (
-//       liveNowState,
-//       liveNowResidency,
-//       bornResidency,
-//       livedMostResidency
-//     ) {
-//       try {
-//         await updateDoc(docRef, {
-//           currentLocation: liveNowState + " " + liveNowResidency,
-//           bornLocation: bornResidency,
-//           livedMostLocation: livedMostResidency,
-//         });
-//       } catch (error) {
-//         const loginerrorMessage = document.createTextNode(error.message);
-//         document.getElementById("error").appendChild(loginerrorMessage);
-//       }
-//     })(liveNowState, liveNowResidency, bornResidency, livedMostResidency);
-//     document.location.href = "Confirmation.html";
-//   });
-// }
+    (async function (
+      liveNowState,
+      liveNowResidency,
+      bornResidency,
+      livedMostResidency
+    ) {
+      try {
+        await updateDoc(docRef, {
+          currentLocation: liveNowState + " " + liveNowResidency,
+          bornLocation: bornResidency,
+          livedMostLocation: livedMostResidency,
+        });
+        document.location.href = "Confirmation.html";
+      } catch (error) {
+        const loginerrorMessage = document.createTextNode(error.message);
+        document.getElementById("error").appendChild(loginerrorMessage);
+      }
+    })(liveNowState, liveNowResidency, bornResidency, livedMostResidency);
+    document.location.href = "Confirmation.html";
+  });
+}
 
 const profileCreationForm = document.querySelector(".profileCreation-form");
 if (profileCreationForm != null) {
@@ -307,8 +311,8 @@ if (profileCreationForm != null) {
             const loginerrorMessage = document.createTextNode(error.message);
             document.getElementById("error").appendChild(loginerrorMessage);
           }
-          document.location.href = "Residency.html";
         })(monthA, dayA, yearA, genderA);
+        document.location.href = "Residency.html";
       });
     } else {
       document.getElementById("All-fields").style.display = "block";
@@ -317,12 +321,24 @@ if (profileCreationForm != null) {
 } else {
 }
 
+const goToSurvey = document.getElementById("goToSurvey");
+if (goToSurvey != null) {
+  goToSurvey.addEventListener("click", (e) => {
+    reDirection();
+  });
+}
+
+function reDirection() {
+  document.location.href = url + uniqueID;
+}
+
 const profile = document.getElementById("profile");
 if (profile != null) {
   profile.addEventListener("click", (e) => {
     document.location.href = "profile.html";
   });
 }
+
 // const permissions = document.querySelector(".sharePermissions");
 // if (permissions != null) {
 //   permissions.addEventListener("submit", (e) => {
@@ -349,7 +365,6 @@ if (profile != null) {
 //   });
 // }
 
-
 onAuthStateChanged(auth, (user) => {
   if (user) {
     hideNavBar(user);
@@ -364,8 +379,7 @@ const hideNavBar = (user) => {
     document
       .querySelectorAll(".logged-in")
       .forEach((item) => (item.style.display = "block"));
-  } 
-  else {
+  } else {
     document
       .querySelectorAll(".logged-in")
       .forEach((item) => (item.style.display = "none"));
@@ -384,4 +398,4 @@ if (logout != null) {
   });
 }
 
-export  {firebaseConfig};
+export { firebaseConfig};
