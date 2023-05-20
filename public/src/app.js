@@ -181,67 +181,99 @@ if (signUpForm != null) {
     var password = signUpForm["signUp-password"].value;
     var repeatPassword = signUpForm["signUp-repeatPassword"].value;
     var phoneNumber = signUpForm["signUp-mobile"].value;
-
-    if (password == repeatPassword && email == confirmEmail) {
-      document.getElementById("noMatch").style.display = "none";
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          updateProfile(auth.currentUser, {
-            email: email,
-          })
-            .then(() => {})
-            .catch((error) => {});
-          sendEmailVerification(userCredential.user)
-            .then(() => {})
-            .catch((error) => {});
-          createUserCollection(db, userCredential.user.uid, phoneNumber).then(
-            () => {}
-          );
-        })
-        .catch((error) => {
-          var errorMessage = "";
-          switch (error.code) {
-            case "auth/invalid-email":
-              errorMessage =
-                "Your email address appears to be imporperly formatted/missing.";
-              break;
-            case "auth/email-already-exists":
-              errorMessage =
-                "Email is already registered. Please forget password.";
-              break;
-            case "auth/internal-error":
-              errorMessage = "Incorrect password.";
-              break;
-            default:
-              errorMessage = "An undefined Error happened.";
-              break;
-          }
-          const loginerrorMessage = document.createTextNode(errorMessage);
-          if (document.getElementById("error").hasChildNodes()) {
-            document.getElementById("error").removeChild(loginerrorMessage);
-          }
-          document.getElementById("error").appendChild(loginerrorMessage);
-        });
-    } else if (
-      password == "" ||
-      repeatPassword == "" ||
-      password != repeatPassword
-    ) {
-      const loginerrorMessage = document.createTextNode(
-        "Passwords do not match"
-      );
-      if (document.getElementById("error").hasChildNodes()) {
-        document.getElementById("error").removeChild(loginerrorMessage);
-      }
-      document.getElementById("error").appendChild(loginerrorMessage);
-    } else if (email == "" || confirmEmail == "" || email != confirmEmail) {
-      const loginerrorMessage = document.createTextNode("Emails do not match");
-      if (document.getElementById("error").hasChildNodes()) {
-        document.getElementById("error").removeChild(loginerrorMessage);
-      }
-      document.getElementById("error").appendChild(loginerrorMessage);
+    var loginErrorMessage = document.getElementById('error');
+    if (document.getElementById("error").hasChildNodes()) {
+      document.getElementById("error").removeChild(loginerrorMessage);
     }
-  });
+
+
+    var isValidEmail = function (inputText) {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (inputText.match(mailformat)!==null) {
+      return true;
+    } else {
+      return false;
+    }} (email);
+    
+    var isValidPhoneNumber = function (inputText) {
+      var numberFormat = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+      if(inputText.value.match(numberformat)) {
+        return true;
+      } else {
+        return false;
+      }} (phoneNumber);
+    console.log(isValidEmail);
+    if (!isValidEmail) {
+      addTextNode(loginErrorMessage,"Enter a valid email address.");
+    }
+    if (!isValidPhoneNumber) {
+      addTextNode(loginErrorMessage, "Enter phone number in format XXX-XXX-XXXX.");
+    }
+  }
+  )}
+
+    
+  //   if (isValidEmail && password == repeatPassword && email == confirmEmail) {
+  //     document.getElementById("noMatch").style.display = "none";
+  //     createUserWithEmailAndPassword(auth, email, password)
+  //       .then((userCredential) => {
+  //         updateProfile(auth.currentUser, {
+  //           email: email,
+  //         })
+  //           .then(() => {})
+  //           .catch((error) => {});
+  //         sendEmailVerification(userCredential.user)
+  //           .then(() => {})
+  //           .catch((error) => {});
+  //         createUserCollection(db, userCredential.user.uid, phoneNumber).then(
+  //           () => {}
+  //         );
+  //       })
+  //       .catch((error) => {
+  //         var errorMessage = "";
+  //         switch (error.code) {
+  //           case "auth/invalid-email":
+  //             errorMessage =
+  //               "Your email address appears to be imporperly formatted/missing.";
+  //             break;
+  //           case "auth/email-already-exists":
+  //             errorMessage =
+  //               "Email is already registered. Please forget password.";
+  //             break;
+  //           case "auth/internal-error":
+  //             errorMessage = "Incorrect password.";
+  //             break;
+  //           default:
+  //             errorMessage = "An undefined Error happened.";
+  //             break;
+  //         }
+  //       });
+  //   } else if (
+  //     password == "" ||
+  //     repeatPassword == "" 
+  //   ){}
+  //   else if (
+  //     password != repeatPassword
+  //   ) {
+  //     const loginerrorMessage = document.createTextNode(
+  //       "Passwords do not match"
+  //     );
+  //     if (document.getElementById("error").hasChildNodes()) {
+  //       document.getElementById("error").removeChild(loginerrorMessage);
+  //     }
+  //     document.getElementById("error").appendChild(loginerrorMessage);
+  //   } else if (email == "" || confirmEmail == "" || email != confirmEmail) {
+  //     const loginerrorMessage = document.createTextNode("Emails do not match");
+  //     if (document.getElementById("error").hasChildNodes()) {
+  //       document.getElementById("error").removeChild(loginerrorMessage);
+  //     }
+  //     document.getElementById("error").appendChild(loginerrorMessage);
+  //   }
+  // });
+
+function addTextNode(element, message) {
+  element.appendChild(document.createTextNode(message));
+  element.appendChild(document.createTextNode('br'));
 }
 
 const residencyForm = document.querySelector(".residency-form");
@@ -385,6 +417,7 @@ const hideNavBar = (user) => {
       .forEach((item) => (item.style.display = "none"));
   }
 };
+
 
 const logout = document.getElementById("logout");
 if (logout != null) {
