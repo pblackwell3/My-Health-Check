@@ -197,7 +197,7 @@ if (signUpForm != null) {
     
     var isValidPhoneNumber = function (inputText) {
       var numberFormat = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
-      if(inputText.value.match(numberformat)) {
+      if(inputText.match(numberFormat)) {
         return true;
       } else {
         return false;
