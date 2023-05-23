@@ -45,6 +45,9 @@ onAuthStateChanged(auth, (user) => {
     const confirmationUniqueID = document.querySelector(
       ".confirmationUniqueID"
     );
+    if (signUpForm != null) {
+      document.location.href = "profile.html";
+    }
     if (profileInfo != null) {
       const docRef = doc(db, "users", user.uid);
       getDoc(docRef).then((doc) => {
