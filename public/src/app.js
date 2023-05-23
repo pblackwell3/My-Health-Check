@@ -182,8 +182,8 @@ if (signUpForm != null) {
     var repeatPassword = signUpForm["signUp-repeatPassword"].value;
     var phoneNumber = signUpForm["signUp-mobile"].value;
     var loginErrorMessage = document.getElementById('error');
-    if (document.getElementById("error").hasChildNodes()) {
-      document.getElementById("error").removeChild(loginerrorMessage);
+    if (loginErrorMessage.hasChildNodes()) {
+      loginErrorMessage.removeChild(loginErrorMessage.firstChild);
     }
 
 
@@ -196,18 +196,24 @@ if (signUpForm != null) {
     }} (email);
     
     var isValidPhoneNumber = function (inputText) {
-      var numberFormat = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+      var numberFormat = /^\(?([0-9]{3})\)?[-]([0-9]{3})[-]([0-9]{4})$/;
       if(inputText.match(numberFormat)) {
         return true;
       } else {
         return false;
       }} (phoneNumber);
-    console.log(isValidEmail);
+
+
     if (!isValidEmail) {
       addTextNode(loginErrorMessage,"Enter a valid email address.");
-    }
-    if (!isValidPhoneNumber) {
+    } else if (email == "" || confirmEmail == "" || email != confirmEmail) {
+    addTextNode(loginErrorMessage, "Emails must match");
+    } else if (!isValidPhoneNumber) {
       addTextNode(loginErrorMessage, "Enter phone number in format XXX-XXX-XXXX.");
+    } else if (password == "" || repeatPassword == "" ) {
+      addTextNode(loginErrorMessage, "Please enter a valid password.");
+    } else if (password != repeatPassword) {
+      addTextNode(loginErrorMessage, "Passwords must match.");
     }
   }
   )}
@@ -248,32 +254,11 @@ if (signUpForm != null) {
   //             break;
   //         }
   //       });
-  //   } else if (
-  //     password == "" ||
-  //     repeatPassword == "" 
-  //   ){}
-  //   else if (
-  //     password != repeatPassword
-  //   ) {
-  //     const loginerrorMessage = document.createTextNode(
-  //       "Passwords do not match"
-  //     );
-  //     if (document.getElementById("error").hasChildNodes()) {
-  //       document.getElementById("error").removeChild(loginerrorMessage);
-  //     }
-  //     document.getElementById("error").appendChild(loginerrorMessage);
-  //   } else if (email == "" || confirmEmail == "" || email != confirmEmail) {
-  //     const loginerrorMessage = document.createTextNode("Emails do not match");
-  //     if (document.getElementById("error").hasChildNodes()) {
-  //       document.getElementById("error").removeChild(loginerrorMessage);
-  //     }
-  //     document.getElementById("error").appendChild(loginerrorMessage);
   //   }
   // });
 
 function addTextNode(element, message) {
   element.appendChild(document.createTextNode(message));
-  element.appendChild(document.createTextNode('br'));
 }
 
 const residencyForm = document.querySelector(".residency-form");
