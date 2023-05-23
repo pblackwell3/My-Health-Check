@@ -188,12 +188,13 @@ if (signUpForm != null) {
 
 
     var isValidEmail = function (inputText) {
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (inputText.match(mailformat)!==null) {
-      return true;
-    } else {
-      return false;
-    }} (email);
+      var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (inputText.match(mailformat)!==null) {
+        return true;
+      } else {
+        return false;
+      }
+    } (email);
     
     var isValidPhoneNumber = function (inputText) {
       var numberFormat = /^\(?([0-9]{3})\)?[-]([0-9]{3})[-]([0-9]{4})$/;
@@ -201,61 +202,62 @@ if (signUpForm != null) {
         return true;
       } else {
         return false;
-      }} (phoneNumber);
+      }
+    } (phoneNumber);
 
 
     if (!isValidEmail) {
       addTextNode(loginErrorMessage,"Enter a valid email address.");
-    } else if (email == "" || confirmEmail == "" || email != confirmEmail) {
-    addTextNode(loginErrorMessage, "Emails must match");
-    } else if (!isValidPhoneNumber) {
-      addTextNode(loginErrorMessage, "Enter phone number in format XXX-XXX-XXXX.");
-    } else if (password == "" || repeatPassword == "" ) {
-      addTextNode(loginErrorMessage, "Please enter a valid password.");
-    } else if (password != repeatPassword) {
-      addTextNode(loginErrorMessage, "Passwords must match.");
+      } else if (email == "" || confirmEmail == "" || email != confirmEmail) {
+      addTextNode(loginErrorMessage, "Emails must match");
+      } else if (!isValidPhoneNumber) {
+        addTextNode(loginErrorMessage, "Enter phone number in format XXX-XXX-XXXX.");
+      } else if (password == "" || repeatPassword == "" ) {
+        addTextNode(loginErrorMessage, "Please enter a valid password.");
+      } else if (password != repeatPassword) {
+        addTextNode(loginErrorMessage, "Passwords must match.");
     }
-  }
-  )}
 
-    
-  //   if (isValidEmail && password == repeatPassword && email == confirmEmail) {
-  //     document.getElementById("noMatch").style.display = "none";
-  //     createUserWithEmailAndPassword(auth, email, password)
-  //       .then((userCredential) => {
-  //         updateProfile(auth.currentUser, {
-  //           email: email,
-  //         })
-  //           .then(() => {})
-  //           .catch((error) => {});
-  //         sendEmailVerification(userCredential.user)
-  //           .then(() => {})
-  //           .catch((error) => {});
-  //         createUserCollection(db, userCredential.user.uid, phoneNumber).then(
-  //           () => {}
-  //         );
-  //       })
-  //       .catch((error) => {
-  //         var errorMessage = "";
-  //         switch (error.code) {
-  //           case "auth/invalid-email":
-  //             errorMessage =
-  //               "Your email address appears to be imporperly formatted/missing.";
-  //             break;
-  //           case "auth/email-already-exists":
-  //             errorMessage =
-  //               "Email is already registered. Please forget password.";
-  //             break;
-  //           case "auth/internal-error":
-  //             errorMessage = "Incorrect password.";
-  //             break;
-  //           default:
-  //             errorMessage = "An undefined Error happened.";
-  //             break;
-  //         }
-  //       });
-  //   }
-  // });
+      
+    if (isValidEmail && password == repeatPassword && email == confirmEmail) {
+      document.getElementById("noMatch").style.display = "none";
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          updateProfile(auth.currentUser, {
+            email: email,
+          })
+            .then(() => {})
+            .catch((error) => {});
+          sendEmailVerification(userCredential.user)
+            .then(() => {})
+            .catch((error) => {});
+          createUserCollection(db, userCredential.user.uid, phoneNumber).then(
+            () => {}
+          );
+        })
+        .catch((error) => {
+          var errorMessage = "";
+          switch (error.code) {
+            case "auth/invalid-email":
+              errorMessage =
+                "Your email address appears to be imporperly formatted/missing.";
+              break;
+            case "auth/email-already-exists":
+              errorMessage =
+                "Email is already registered. Please forget password.";
+              break;
+            case "auth/internal-error":
+              errorMessage = "Incorrect password.";
+              break;
+            default:
+              errorMessage = "An undefined Error happened.";
+              break;
+          }
+        });
+      }
+  })
+}
+
 
 function addTextNode(element, message) {
   element.appendChild(document.createTextNode(message));
