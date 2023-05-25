@@ -16,6 +16,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 
+
+
+
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDEd8KPUnstmvpI2ZYjTBfxQSl594DFlzw",
