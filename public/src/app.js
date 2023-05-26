@@ -61,20 +61,36 @@ onAuthStateChanged(auth, (user) => {
         const phoneNumberProfile = document.createTextNode(
           doc.data().phoneNumber
         );
+        document
+        .getElementById("profile-name")
+        .placeholder = user.displayName;
 
-        if (!document.getElementById("profile-name").hasChildNodes()) {
-          document
-            .getElementById("profile-name")
-            .appendChild(displayNameProfile);
-          document
-            .getElementById("profile-mobile")
-            .appendChild(phoneNumberProfile);
-          document.getElementById("profile-email").appendChild(emailProfile);
-          document
-            .getElementById("profile-uniqueid")
-            .appendChild(uniqueIDProfile);
-        }
+        document
+          .getElementById("profile-mobile")
+          .placeholder = doc.data().phoneNumber;
+
+        document
+        .getElementById("profile-email")
+        .placeholder = user.email;
+
       });
+      window.showHide = function showHide() {
+        const docRef = doc(db, "users", user.uid);
+        getDoc(docRef).then((doc) => {
+        uniqueID = doc.data().uniqueID;
+        var confirmationUniqueID = document.getElementById(
+          "confirmationUniqueID"
+        );
+        var showHide = document.getElementById("showHide");
+        if(confirmationUniqueID.placeholder == uniqueID) {
+          confirmationUniqueID.placeholder = "";
+          showHide.value = "Show";
+        } else {
+          confirmationUniqueID.placeholder = uniqueID;
+          showHide.value = "Hide";
+        }
+      })
+      }
     } else if (confirmationUniqueID != null) {
       const docRef = doc(db, "users", user.uid);
       getDoc(docRef).then((doc) => {
@@ -104,6 +120,9 @@ onAuthStateChanged(auth, (user) => {
     }
   }
 });
+
+
+
 
 const reset = document.querySelector(".reset-password");
 const loginForm = document.querySelector(".login-form");

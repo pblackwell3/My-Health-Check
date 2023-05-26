@@ -93,35 +93,59 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
     <div id="container" class="profileInfo">
       <br>
         <h1>Profile Information</h1><br/>
-      <br /><br />
-      <label id="">Name:</label>
-      <div class="formstyle floatright" type="text"
-      id="profile-name"></div>
-      <br><br><br>
-      <label id="">Mobile Number:</label>
-      <div class="formstyle floatright" type="text"
-      id="profile-mobile"></div>
-      <br><br><br>
-      <label id="">Email:</label>
-      <div class="formstyle floatright" type="text"
-      id="profile-email"></div>
-      <br><br><br>
-      <h6>This is your unique ID that will be required to take the survey. Keep it secure as it will allow you to retreive and view your survey results.</h6>
-      <label for="password">Unique ID:</label>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-target
-      </button>
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body" id="profile-uniqueid">
-          Information inside this thing to confirm it works 
-        </div>
+    <div class=".container-fluid shadow-1 p-5">
+      <div class="input-group mb-4">
+        <span class="input-group-text">Name</span>
+        <input
+          class="form-control"
+          id="profile-name"
+          type="text"
+          disabled
+        />
       </div>
-      
-      <br /><br /><br />
+      <div class="input-group mb-4">
+          <span class="input-group-text">Mobile Number</span>
+          <input
+            class="form-control"
+            id="profile-mobile"
+            type="text"
+            disabled
+          />
+      </div>
+      <div class="input-group mb-4">
+        <span class="input-group-text">Email</span>
+        <input
+          class="form-control"
+          id="profile-email"
+          type="text"
+          disabled
+        />
+      </div>
+      <h6>This is your unique ID that will be required to take the survey. Keep it secure as it will allow you to retreive and view your survey results.</h6>
+      <div class="input-group mb-4">
+        <span class="input-group-text">UniqueID</span>
+        <input
+          type="text"
+          class="form-control"
+          id = "confirmationUniqueID"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+          disabled
+        />
+        <button class="btn btn-success " type="button" id="showHide" onclick="showHide()" data-mdb-ripple-color="dark">Show
+        </button>
+      </div>
+
+      <br><br><br>
       <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
         <a href= "YourInfo.html" target = "_self"><button type="submit" class="btn btn-success btn-rounded">Update Information</button></a>
       </div>
       <br /><br />
+      <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
+        <button id="goToSurvey"  class="btn btn-success btn-rounded">Take the Quiz</button>
+      </div>
+    </div>  
+     
       <!-- <label id="profile-permissions">
         Share MyPH HealthChek&trade; Preventive Health information
         with:
@@ -152,9 +176,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
       />
       <label for="password">HCP</label><br /><br /> -->
       
-      <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
-        <button id="goToSurvey"  class="btn btn-success btn-rounded">Take the Quiz</button>
-      </div>
+      
     </div>
 
     <p>&nbsp;</p>
