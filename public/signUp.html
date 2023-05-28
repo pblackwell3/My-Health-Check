@@ -111,8 +111,7 @@
 
 <br>
 
-    <div id="container">
-      <br />
+    <div id="container" class ="shadow-3 p-5">
       <h2>Sign Up for MyPH HealthChek&trade; Account</h2>
       <h6>
         Already have an account?
@@ -121,108 +120,53 @@
       <br />
 
       <!-- Begin Form -->
-      <form>
+      <form class="d-flex flex-column signUp-form" onsubmit="return false;">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
-              <input type="text" id="form3Example1" class="form-control" />
-              <label class="form-label" for="form3Example1">First name</label>
+              <input type="email" id="signUp-email" class="form-control" />
+              <label class="form-label" for="signUp-email" >Email</label>
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
-              <input type="text" id="form3Example2" class="form-control" />
-              <label class="form-label" for="form3Example2">Last name</label>
+              <input type="email" id="signUp-confirmEmail" class="form-control" />
+              <label class="form-label" for="signUp-confirmEmail">Confirm Email</label>
             </div>
           </div>
         </div>
       
-        <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="email" id="form3Example3" class="form-control" />
-          <label class="form-label" for="form3Example3">Email address</label>
+          <input type="mobile phone" id="signUp-mobile" class="form-control" />
+          <label class="form-label" for="signUp-mobile">Mobile Phone</label>
         </div>
       
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-          <input type="password" id="form3Example4" class="form-control" />
-          <label class="form-label" for="form3Example4">Password</label>
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <input type="password"  id="signUp-password" class="form-control" />
+          <label class="form-label" for="signUp-password">Password</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <input type="password" id="signUp-repeatPassword" class="form-control" />
+          <label class="form-label" for="signUp-repeatPassword">Confirm Password</label>
+            </div>
+          </div>
         </div>
-      
+        
+       
         <!-- Checkbox -->
         <div class="form-check d-flex justify-content-center mb-4">
-          <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-          <label class="form-check-label" for="form2Example33">
-            Subscribe to our newsletter
-          </label>
-        </div>
-      
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
-      
-      </form>
-      <form class="d-flex flex-column signUp-form" onSubmit="return false;">
-          <label for="email">Email:</label>
-          <input
-            class="formstyle"
-            type="text"
-            id="signUp-email"
-            name="email"
-            placeholder="abc123@mail.com"
-          />
-        <br />
-        <label for="email">Confirm Email:</label>
-        <input
-          class="formstyle"
-          type="text"
-          id="signUp-confirmEmail"
-          name="email"
-          placeholder="abc123@mail.com"
-        />
-      <br />
-          <label for="mobile">Mobile Number:</label>
-          <input
-            class="formstyle"
-            type="text"
-            id="signUp-mobile"
-            name="mobile"
-            placeholder="000-000-0000"
-          />
-        <br />
-        <label for="password">Password:</label>
-        <input
-          class="formstyle"
-          type="password"
-          id="signUp-password"
-          name="email"
-          placeholder="Atleast 8 chars, 1 capital letter, and 1 special character"
-        /><br />
-        <label for="password">Confirm Password:</label>
-        <input
-          class="formstyle"
-          type="password"
-          id="signUp-repeatPassword"
-          name="mobile"
-          placeholder="Must match password"
-        /><br />
-        <h6 id="noMatch" class="text-danger" style="display: none">
-          Passwords do not match
-        </h6>
-        <h6 id="emailExists" class="text-danger" style="display: none">
-          Account with email already exists
-        </h6>
-        
-        <h6 class = "text-danger" id="error"></h6>
-
-        <div class="form-check d-flex flex-fill">
           <input
             class="form-check-input"
             type="checkbox"
             id="acceptDisclaimerCheckbox"
           />
           <label class="form-check-label" for="flexCheckDefault">
-            By signing up, I have read and agreed to the
+            By signing up, I acknowledge I have read and agreed to the
             <a
               data-mdb-toggle="modal"
               data-mdb-target="#disclaimerModal"
@@ -231,21 +175,16 @@
             > of MyPH HealthChek™.
           </label>
         </div>
-
-       <br>
-        <button
+      
+        <!-- Submit button -->
+     
+          <button
           id="signUpButton"
           type="submit"
           class="btn btn-success btn-rounded"
         >
           Create Account
         </button>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        
         <div
           class="modal fade"
           id="disclaimerModal"
@@ -391,12 +330,25 @@
             </div>
           </div>
         </div>
+
+       
+
+        <h6 id="noMatch" class="text-danger" style="display: none">
+          Passwords do not match
+        </h6>
+        <h6 id="emailExists" class="text-danger" style="display: none">
+          Account with email already exists
+        </h6>
+      <div class="p-3 container mb-4 text-danger" id="error"></div>  
+        
+      
       </form>
       <!-- Button trigger modal -->
 
       <!-- Modal -->
     </div>
     <!-- Button trigger modal -->
+    <br><br>
 
     <!-- footer -->
     <footer class="bg-dark text-center text-white">

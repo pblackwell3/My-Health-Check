@@ -83,7 +83,7 @@ onAuthStateChanged(auth, (user) => {
         );
         var showHide = document.getElementById("showHide");
         if(confirmationUniqueID.placeholder == uniqueID) {
-          confirmationUniqueID.placeholder = "";
+          confirmationUniqueID.placeholder = "**********";
           showHide.value = "Show";
         } else {
           confirmationUniqueID.placeholder = uniqueID;
@@ -142,14 +142,14 @@ if (loginForm != null) {
         switch (error.code) {
           case "auth/invalid-email":
             errorMessage =
-              "Your email address appears to be imporperly formatted/missing.";
+              "Your email/password you have entered is incorrect.";
             break;
-          case "auth/email-already-exists":
+          case "auth/wrong-password":
             errorMessage =
-              "Email is already registered. Please forget password.";
+            "Your email/password you have entered is incorrect.";
             break;
-          case "auth/internal-error":
-            errorMessage = "Please create a password.";
+          case "auth/user-not-found":
+            errorMessage = "No account associated with this email/password combination";
             break;
           default:
             errorMessage = error.message;
@@ -263,21 +263,22 @@ if (signUpForm != null) {
         .catch((error) => {
           var errorMessage = "";
           switch (error.code) {
-            case "auth/invalid-email":
+            case 'auth/email-already-in-use':
               errorMessage =
-                "Your email address appears to be imporperly formatted/missing.";
+              "Email is already registered. Please sign-in.";
               break;
-            case "auth/email-already-exists":
+            case "auth/weak-password":
               errorMessage =
-                "Email is already registered. Please forget password.";
+              'The password is too weak.';
               break;
             case "auth/internal-error":
               errorMessage = "Incorrect password.";
               break;
             default:
-              errorMessage = "An undefined Error happened.";
+              errorMessage = error.message;
               break;
           }
+          addTextNode(loginErrorMessage, errorMessage);
         });
       }
   })

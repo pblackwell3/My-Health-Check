@@ -92,8 +92,9 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
     <!-- Main Container -->
     <div id="container" class="profileInfo">
       <br>
-        <h1>Profile Information</h1><br/>
-    <div class=".container-fluid shadow-1 p-5">
+       
+    <div class=".container-fluid shadow-3 p-5">
+      <h1>Profile Information</h1><br/>
       <div class="input-group mb-4">
         <span class="input-group-text">Name</span>
         <input
@@ -126,23 +127,23 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
         <span class="input-group-text">UniqueID</span>
         <input
           type="text"
+          placeholder ="**********"
           class="form-control"
           id = "confirmationUniqueID"
           aria-label="Recipient's username"
           aria-describedby="button-addon2"
           disabled
         />
-        <button class="btn btn-success " type="button" id="showHide" onclick="showHide()" data-mdb-ripple-color="dark">Show
+        <button class="btn btn-success" type="button" id="showHide" onclick="showHide()" data-mdb-ripple-color="dark">Show/Hide
         </button>
       </div>
-
-      <br><br><br>
+      <br>
       <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href= "YourInfo.html" target = "_self"><button type="submit" class="btn btn-success btn-rounded">Update Information</button></a>
+        <a href= "YourInfo.html" target = "_self"><button  class="btn btn-outline-success btn-rounded" >Update Information</button></a>
       </div>
-      <br /><br />
+      <br />
       <div class="container d-grid gap-2 d-md-flex justify-content-md-end">
-        <button id="goToSurvey"  class="btn btn-success btn-rounded">Take the Quiz</button>
+        <button id="goToSurvey" class="btn btn-success btn-rounded">Take the Quiz</button>
       </div>
     </div>  
      
