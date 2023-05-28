@@ -130,8 +130,8 @@ if (loginForm != null) {
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    var email = loginForm["loginEmail"].value;
-    var password = loginForm["loginPassword"].value;
+    var email = document.getElementById("loginEmail").value;
+    var password = document.getElementById("loginPassword").value;
     // var username = loginForm['username'].value;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
