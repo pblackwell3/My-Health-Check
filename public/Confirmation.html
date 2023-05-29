@@ -104,9 +104,9 @@
     </div> -->
 \
     <!-- Container -->
-    <div id="container">
+    <div id="container" class="shadow-4 p-4">
       <h2>Congratulations!</h2>
-      <div class="information">
+      <div class="fill text-left p-2">
         <p>
           Congratulations. You have completed your initial sign up for MyPH
           HealthChek&trade; survey. Your information has been stored. You can view and
@@ -114,35 +114,21 @@
         </p>
       </div>
 
-      <!-- Progress Bar -->
-      <nav aria-label="...">
-        <ul class="pagination">
-          <li class="page-item disabled">
-            <a class="page-link" >Your information</a>
-          </li>
-          <li class="page-item disabled" aria-current="page">
-            <a class="page-link">Your information continued </a>
-          </li>
-          <li class="page-item active"><a class="page-link">Confirmation<span class="visually-hidden">(current)</span></a></li>
-        </ul>
-      </nav>
-
-      <div class="information">
-        <br>
+      <div class="fill text-left p-2">
         <p>
           To protect your identity, from this point forward, we will not use
           your <strong>real name</strong> in this preventive health survey. You
-          have been assigned a uniqueID that you can find below. Please copy your uniqueID as you will need it to start the survey <a href= "https://myhealthchk.checkbox.com/omghealth" target = "_self">here</a>. Your uniqueID can also be found on your profile page.
-      </div>
+          have been assigned a uniqueID that you can find on your profile page. 
+          Click below to begin the survey. Your uniqueID will automatically populate.
         </p>
+      </div>
         <br>
-        <h5 class = "confirmationUniqueID text-danger"></h5>
+        <h5 class = "confirmationUniqueID d-none text-danger"></h5>
         <p>&nbsp;</p>
         <button id="goToSurvey" type="button" class="btn btn-success btn-rounded">Take Survey</button>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
       </div>
     </div>
+    <br><br>
     <footer class="bg-dark text-center text-white">
       <!-- Grid container -->
       <div class="container p-4">
