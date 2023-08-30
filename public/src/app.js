@@ -20,16 +20,7 @@ import {
 
 
 // TODO: Replace the following with your app's Firebase project configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDEd8KPUnstmvpI2ZYjTBfxQSl594DFlzw",
-  authDomain: "mypreventivehealth-94667.firebaseapp.com",
-  databaseURL: "https://mypreventivehealth-94667-default-rtdb.firebaseio.com",
-  projectId: "mypreventivehealth-94667",
-  storageBucket: "mypreventivehealth-94667.appspot.com",
-  messagingSenderId: "762526989351",
-  appId: "1:762526989351:web:21bc52f5c6c42344b3e202",
-  measurementId: "G-RBHLB1NC61",
-};
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
